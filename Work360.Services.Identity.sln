@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6C77B02E-207B-4EDA-A2B0-2FDF637B84F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work360.Services.Identity.Api", "src\Work360.Services.Identity.Api\Work360.Services.Identity.Api.csproj", "{AEB91332-20B1-46BB-B14B-10158F5248F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work360.Services.Identity.Application", "src\Work360.Services.Identity.Application\Work360.Services.Identity.Application.csproj", "{9A23F910-2B7C-42E6-B672-4042CC776672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work360.Services.Identity.Core", "src\Work360.Services.Identity.Core\Work360.Services.Identity.Core.csproj", "{31638D38-E282-49AB-AFF5-476DF80EF458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work360.Services.Identity.Infrastructure", "src\Work360.Services.Identity.Infrastructure\Work360.Services.Identity.Infrastructure.csproj", "{BD766E4C-9C46-4D26-96E2-9521ECFC735E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AEB91332-20B1-46BB-B14B-10158F5248F0} = {6C77B02E-207B-4EDA-A2B0-2FDF637B84F4}
+		{9A23F910-2B7C-42E6-B672-4042CC776672} = {6C77B02E-207B-4EDA-A2B0-2FDF637B84F4}
+		{31638D38-E282-49AB-AFF5-476DF80EF458} = {6C77B02E-207B-4EDA-A2B0-2FDF637B84F4}
+		{BD766E4C-9C46-4D26-96E2-9521ECFC735E} = {6C77B02E-207B-4EDA-A2B0-2FDF637B84F4}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEB91332-20B1-46BB-B14B-10158F5248F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB91332-20B1-46BB-B14B-10158F5248F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB91332-20B1-46BB-B14B-10158F5248F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB91332-20B1-46BB-B14B-10158F5248F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A23F910-2B7C-42E6-B672-4042CC776672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A23F910-2B7C-42E6-B672-4042CC776672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A23F910-2B7C-42E6-B672-4042CC776672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A23F910-2B7C-42E6-B672-4042CC776672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31638D38-E282-49AB-AFF5-476DF80EF458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31638D38-E282-49AB-AFF5-476DF80EF458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31638D38-E282-49AB-AFF5-476DF80EF458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31638D38-E282-49AB-AFF5-476DF80EF458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD766E4C-9C46-4D26-96E2-9521ECFC735E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD766E4C-9C46-4D26-96E2-9521ECFC735E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD766E4C-9C46-4D26-96E2-9521ECFC735E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD766E4C-9C46-4D26-96E2-9521ECFC735E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
