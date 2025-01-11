@@ -1,6 +1,0 @@
-@Work360.Services.Identity.Api_HostAddress = http://localhost:5255
-
-GET {{Work360.Services.Identity.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
