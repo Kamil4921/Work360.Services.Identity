@@ -21,7 +21,7 @@ public static class SignIn
     private static readonly string TenantId = Environment.GetEnvironmentVariable("TenantId"); 
     private static readonly string ClientSecret = Environment.GetEnvironmentVariable("ClientSecret");
     private static readonly string ROPCPolicyId = Environment.GetEnvironmentVariable("ROPCPolicyId");
-    private static readonly string TokenEndpoint = $"https://{TenantId}.b2clogin.com/{TenantId}/oauth2/v2.0/token?p={ROPCPolicyId}";
+    private static readonly string TokenEndpoint = $"https://work36azemployes.b2clogin.com/work36azemployes/oauth2/v2.0/token?p={ROPCPolicyId}";
     
     private static readonly HttpClient httpClient = new HttpClient();
     
@@ -31,6 +31,10 @@ public static class SignIn
         HttpRequest req,
         ILogger log)
     {
+        // !!
+        //TODO: Try new function with startup and configure there authorization as in udemy with B2C 
+        // !!
+        
         var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
         dynamic data = JsonConvert.DeserializeObject(requestBody);
 
