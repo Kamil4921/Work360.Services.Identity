@@ -20,10 +20,9 @@ public static class SignIn
     private static readonly string ClientId = Environment.GetEnvironmentVariable("ClientId"); 
     private static readonly string TenantId = Environment.GetEnvironmentVariable("TenantId"); 
     private static readonly string ClientSecret = Environment.GetEnvironmentVariable("ClientSecret");
-    private static readonly string ROPCPolicyId = Environment.GetEnvironmentVariable("ROPCPolicyId");
-    private static readonly string TokenEndpoint = $"https://work36azemployes.b2clogin.com/work36azemployes/oauth2/v2.0/token?p={ROPCPolicyId}";
+    private static readonly string TokenEndpoint = $"https://login.microsoftonline.com/{TenantId}/oauth2/v2.0/token";    
     
-    private static readonly HttpClient httpClient = new HttpClient();
+    private static readonly HttpClient httpClient = new();
     
     [FunctionName("SignIn")]
     public static async Task<IActionResult> RunAsync(
@@ -31,38 +30,26 @@ public static class SignIn
         HttpRequest req,
         ILogger log)
     {
-        // !!
-        //TODO: Try new function with startup and configure there authorization as in udemy with B2C 
-        // !!
-        
-        var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        dynamic data = JsonConvert.DeserializeObject(requestBody);
-
-        string email = data?.email;
+        var requestBody = await new StreamReader(req.Body).ReadToEndAsync(); 
+        dynamic data = JsonConvert.DeserializeObject(requestBody); 
+        string email = data?.email; 
         string password = data?.password;
-        
-        var requestBodySend = new FormUrlEncodedContent(new[]
+
+        var keyValues = new List<KeyValuePair<string, string>>
         {
-            new KeyValuePair<string, string>("client_id", ClientId), 
-            new KeyValuePair<string, string>("scope", "https://graph.microsoft.com/.default"), 
-            new KeyValuePair<string, string>("client_secret", ClientSecret), 
-            new KeyValuePair<string, string>("grant_type", "password"), 
-            new KeyValuePair<string, string>("username", email), 
-            new KeyValuePair<string, string>("password", password)
-        });
+            new("client_id", ClientId),
+            new("scope", "https://graph.microsoft.com/.default"),
+            new("client_secret", ClientSecret),
+            new("grant_type", "password"),
+            new("username", email), new("password", password)
+        };
         
-        var response = await httpClient.PostAsync(TokenEndpoint, requestBodySend);
-        /*
-        var confidentialClient = ConfidentialClientApplicationBuilder.Create(ClientId)
-            .WithClientSecret(ClientSecret)
-            .WithAuthority(new Uri($"https://login.microsoftonline.com/{TenantId}"))
-            .Build();
+        var requestContent = new FormUrlEncodedContent(keyValues); 
+        requestContent.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
         
-        var scopes = new string[] { "https://graph.microsoft.com/.default" };
-        
-        var result = await confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync();
-*/
+        var response = await httpClient.PostAsync(TokenEndpoint, requestContent);
         var responseContent = await response.Content.ReadAsStringAsync();
+        
         dynamic token = JsonConvert.DeserializeObject(responseContent);
         
         return new OkObjectResult(new { accessToken = token?.access_token });
